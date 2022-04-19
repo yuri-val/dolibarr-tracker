@@ -5,7 +5,8 @@
     "build": "vite build",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "dev": "vite",
-    "preview": "vite preview --port 5050"
+    "preview": "vite preview --port 5050",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "^0.26.1",
@@ -24,6 +25,7 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^8.2.0",
+    "gh-pages": "^3.2.3",
     "material-design-icons-iconfont": "^6.6.0",
     "prettier": "^2.5.1",
     "vite": "^2.9.1",
