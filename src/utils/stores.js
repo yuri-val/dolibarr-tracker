@@ -18,14 +18,29 @@ export default function compose(name, options, extend) {
     actions: {
       fetchData() {
         this.loading.data = true;
-        options.api.index().then((response) => {
+        return options.api.index().then((response) => {
           this.data = response.data;
           this.loading.data = false;
         });
       },
       fetchItem(id) {
         this.loading.item = true;
-        options.api.show(id).then((response) => {
+        return options.api.show(id).then((response) => {
+          this.item = response.data;
+          this.loading.item = false;
+        });
+      },
+      createItem(data) {
+        this.loading.item = true;
+        return options.api.create(data).then((response) => {
+          const id = response.data;
+          this.fetchItem(id);
+          return Promise.resolve(id);
+        });
+      },
+      updateItem(id, data) {
+        this.loading.item = true;
+        return options.api.update(id, data).then((response) => {
           this.item = response.data;
           this.loading.item = false;
         });

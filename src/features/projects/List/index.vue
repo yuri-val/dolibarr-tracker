@@ -28,15 +28,18 @@
 <script>
 import { onMounted, computed } from "vue";
 import { useProjectsStore } from "@/stores/projects.js";
+import { useMainStore } from "@/stores/main";
 
 export default {
   setup() {
     const store = useProjectsStore();
+    const mainStore = useMainStore();
     const loading = computed(() => store.loading.data);
     const data = computed(() => store.data);
 
     onMounted(() => {
       store.fetchData();
+      mainStore.breadcrumbs = [{ label: "Projects", route: "/projects" }];
     });
 
     return {

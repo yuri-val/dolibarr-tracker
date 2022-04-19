@@ -1,7 +1,17 @@
 <script>
+import { onMounted } from "vue";
+import { useMainStore } from "@/stores/main";
+
 export default {
   name: "HomeView",
   props: ["isAuthenticated"],
+  setup() {
+    const mainStore = useMainStore();
+
+    onMounted(() => {
+      mainStore.breadcrumbs = [];
+    });
+  },
 };
 </script>
 

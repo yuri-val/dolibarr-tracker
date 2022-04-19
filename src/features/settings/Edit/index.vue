@@ -34,13 +34,15 @@
 
 <script>
 import { useSettingsStore } from "@/stores/settings";
-import { ref } from "vue";
+import { useMainStore } from "@/stores/main";
+import { ref, onMounted } from "vue";
 import { fromStore, toStore } from "@/utils/localStorageStore";
 
 export default {
   name: "Settings",
   setup() {
     const store = useSettingsStore();
+    const mainStore = useMainStore();
     const form = ref(
       fromStore("settings", {
         host: "",
@@ -54,6 +56,10 @@ export default {
       store.$patch(form.value);
       window.location.replace("/");
     };
+
+    onMounted(() => {
+      mainStore.breadcrumbs = [{ label: "Settings", route: "/settings" }];
+    });
 
     return {
       form,

@@ -1,8 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import Projects from "@/features/projects/index";
-import Tasks from "@/features/tasks";
-import Settings from "@/features/settings";
 import { useMainStore } from "../stores/main";
 
 const router = createRouter({
@@ -11,30 +7,37 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView,
+      component: () => import("@/views/HomeView.vue"),
     },
     {
       path: "/settings",
       name: "settings",
-      component: Settings.Edit,
+      component: () => import("@/features/settings/Edit/index.vue"),
     },
     {
       path: "/projects",
       name: "projects",
-      component: Projects.List,
+      component: () => import("@/features/projects/List/index.vue"),
       meta: { requiresAuth: true },
     },
     {
       path: "/projects/:id",
       name: "project.show",
-      component: Projects.Show,
+      component: () => import("@/features/projects/Show/index.vue"),
+      meta: { requiresAuth: true },
+    },
+
+    {
+      path: "/tasks/create",
+      name: "task.create",
+      component: () => import("@/features/tasks/Create.vue"),
       meta: { requiresAuth: true },
     },
 
     {
       path: "/tasks/:id/add_time",
       name: "task.add_time",
-      component: Tasks.AddTime,
+      component: () => import("@/features/tasks/AddTime/index.vue"),
       meta: { requiresAuth: true },
     },
   ],

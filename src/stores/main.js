@@ -14,6 +14,7 @@ export const useMainStore = defineStore({
       isAuthenticated: false,
       error: null,
       company: defaultCompany,
+      breadcrumbs: [],
     }),
   getters: {},
   actions: {

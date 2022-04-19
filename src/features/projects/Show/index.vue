@@ -12,9 +12,15 @@
     <va-inner-loading :loading="loadingTasks">
       <va-list>
         <va-list-label> Tasks </va-list-label>
-        <va-button size="small" icon="add_circle_outline" class="mr-4"
-          >Add</va-button
+        <va-button
+          v-if="item.id"
+          size="small"
+          icon="add_circle_outline"
+          class="mr-4"
+          :to="{ name: 'task.create', query: { projectId: item.id } }"
         >
+          Add
+        </va-button>
         <va-list-item v-for="task in itemTasks" :key="task.ref">
           <va-list-item-section>
             <va-list-item-label>
@@ -46,20 +52,32 @@
 <script>
 import { onMounted, computed } from "vue";
 import { useProjectsStore } from "@/stores/projects.js";
+import { useMainStore } from "@/stores/main";
 import { useRoute } from "vue-router";
 
 export default {
   name: "ShowProject",
   setup() {
     const store = useProjectsStore();
+    const mainStore = useMainStore();
     const route = useRoute();
     const loading = computed(() => store.loading.item);
     const loadingTasks = computed(() => store.loadingItemTasks);
     const item = computed(() => store.item);
     const itemTasks = computed(() => store.itemTasks);
 
+    const setBreadcrumb = () => {
+      mainStore.breadcrumbs = [
+        { label: "Projects", route: "/projects" },
+        {
+          label: item.value.ref,
+          route: { name: "project.show", params: { id: route.params.id } },
+        },
+      ];
+    };
+
     onMounted(() => {
-      store.fetchItem(route.params.id);
+      store.fetchItem(route.params.id).then(() => setBreadcrumb());
       store.fetchItemTasks(route.params.id);
     });
 

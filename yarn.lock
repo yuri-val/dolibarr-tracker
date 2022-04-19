@@ -1392,11 +1392,6 @@ vite@^2.9.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue-axios@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-3.4.1.tgz#e092ec4060b42e941ea5059df9b8f09058c3eea9"
-  integrity sha512-8YZYUOQrBEJktxoQtrM4rr2LfVcDaWfJqv8MqtLlgLlkuBvCYKFSZSo6AXQ4YcCzdgccDqstmuaEh68lcH9xWA==
-
 vue-cli-plugin-vuestic-ui@~1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/vue-cli-plugin-vuestic-ui/-/vue-cli-plugin-vuestic-ui-1.0.5.tgz#f0cefbd7a2d9df751b8fddc101e86a1eba0a6db1"

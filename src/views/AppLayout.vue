@@ -1,12 +1,13 @@
 <script>
-import { useMainStore } from "../stores/main.js";
+import { useMainStore } from "@/stores/main.js";
 import { onMounted } from "vue";
 import Navbar from "@/components/Navbar.vue";
-import { toStore } from "../utils/localStorageStore";
+import { toStore } from "@/utils/localStorageStore";
+import Breadcrumbs from "@/components/Breadcrumbs.vue";
 
 export default {
   name: "app-layout",
-  components: { Navbar },
+  components: { Breadcrumbs, Navbar },
   setup() {
     const store = useMainStore();
 
@@ -27,8 +28,9 @@ export default {
     <navbar :company="store.company" />
     <div class="app-layout__content">
       <div class="app-layout__page">
-        <div class="layout fluid gutter--xl">
-          <router-view :isAuthenticated="isAuthenticated" />
+        <breadcrumbs />
+        <div class="layout fluid gutter--xl pa-2">
+          <router-view />
         </div>
       </div>
     </div>
