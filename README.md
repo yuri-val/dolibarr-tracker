@@ -1,6 +1,6 @@
 # Dolibarr Tracker
 
-
+Web interface for quick time tracking by tasks in the [Dolibarr ERP](https://www.dolibarr.org/) system
 
 
 ## Project Setup
