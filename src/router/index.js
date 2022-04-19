@@ -6,7 +6,7 @@ import Settings from "@/features/settings";
 import { useMainStore } from "../stores/main";
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
