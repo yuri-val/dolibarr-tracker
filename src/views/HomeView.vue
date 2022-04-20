@@ -1,6 +1,7 @@
 <script>
 import { onMounted } from "vue";
 import { useMainStore } from "@/stores/main";
+import { useMetaData } from "../utils/useMetaData";
 
 export default {
   name: "HomeView",
@@ -9,7 +10,10 @@ export default {
     const mainStore = useMainStore();
 
     onMounted(() => {
-      mainStore.breadcrumbs = [];
+      useMetaData(mainStore, {
+        title: "Home",
+        breadcrumbs: [],
+      });
     });
   },
 };

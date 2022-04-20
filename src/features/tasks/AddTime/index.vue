@@ -77,6 +77,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useTasksStore } from "@/stores/tasks";
 import { useMainStore } from "@/stores/main";
 import { spentTimes } from "@/utils/selectItems";
+import { setAddTimeMetadata } from "../utils";
 
 export default {
   name: "AddTime",
@@ -108,25 +109,12 @@ export default {
       form.value.duration += value * 60;
     };
 
-    const setBreadcrumb = () => {
-      mainStore.breadcrumbs = [
-        { label: "Projects", route: "/projects" },
-        {
-          label: "Project",
-          route: {
-            name: "project.show",
-            params: { id: item.value.fk_project },
-          },
-        },
-        {
-          label: item.value.ref,
-          route: { name: "task.add_time", params: { id: item.value.id } },
-        },
-      ];
+    const setMetaData = () => {
+      setAddTimeMetadata(mainStore, item.value);
     };
 
     onMounted(() => {
-      store.fetchItem(route.params.id).then(() => setBreadcrumb());
+      store.fetchItem(route.params.id).then(() => setMetaData());
     });
 
     const onSave = () => {

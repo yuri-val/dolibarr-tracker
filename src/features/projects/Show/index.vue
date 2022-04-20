@@ -54,6 +54,7 @@ import { onMounted, computed } from "vue";
 import { useProjectsStore } from "@/stores/projects.js";
 import { useMainStore } from "@/stores/main";
 import { useRoute } from "vue-router";
+import { setProjectShowMetaData } from "../utils";
 
 export default {
   name: "ShowProject",
@@ -66,18 +67,12 @@ export default {
     const item = computed(() => store.item);
     const itemTasks = computed(() => store.itemTasks);
 
-    const setBreadcrumb = () => {
-      mainStore.breadcrumbs = [
-        { label: "Projects", route: "/projects" },
-        {
-          label: item.value.ref,
-          route: { name: "project.show", params: { id: route.params.id } },
-        },
-      ];
+    const setMetaData = () => {
+      setProjectShowMetaData(mainStore, item.value);
     };
 
     onMounted(() => {
-      store.fetchItem(route.params.id).then(() => setBreadcrumb());
+      store.fetchItem(route.params.id).then(() => setMetaData());
       store.fetchItemTasks(route.params.id);
     });
 

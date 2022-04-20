@@ -29,6 +29,7 @@
 import { onMounted, computed } from "vue";
 import { useProjectsStore } from "@/stores/projects.js";
 import { useMainStore } from "@/stores/main";
+import { setProjectsListMetaData } from "../utils";
 
 export default {
   setup() {
@@ -38,8 +39,8 @@ export default {
     const data = computed(() => store.data);
 
     onMounted(() => {
+      setProjectsListMetaData(mainStore);
       store.fetchData();
-      mainStore.breadcrumbs = [{ label: "Projects", route: "/projects" }];
     });
 
     return {

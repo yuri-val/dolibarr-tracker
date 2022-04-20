@@ -37,6 +37,7 @@ import { useSettingsStore } from "@/stores/settings";
 import { useMainStore } from "@/stores/main";
 import { ref, onMounted } from "vue";
 import { fromStore, toStore } from "@/utils/localStorageStore";
+import { setSettingsMetaData } from "../utils";
 
 export default {
   name: "Settings",
@@ -58,7 +59,7 @@ export default {
     };
 
     onMounted(() => {
-      mainStore.breadcrumbs = [{ label: "Settings", route: "/settings" }];
+      setSettingsMetaData(mainStore);
     });
 
     return {

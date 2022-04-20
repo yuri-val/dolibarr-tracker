@@ -1,6 +1,7 @@
 {
   "name": "dolibarr-tracker",
-  "version": "1.0.1",
+  "license": "GPL-3.0",
+  "version": "1.1.0",
   "scripts": {
     "build": "vite build",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",

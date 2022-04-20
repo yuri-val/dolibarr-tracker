@@ -17,18 +17,26 @@
 <script>
 import { useRoute, useRouter } from "vue-router";
 import { useTasksStore } from "@/stores/tasks";
-import { ref } from "vue";
+import { useMainStore } from "@/stores/main";
+import { onMounted, ref } from "vue";
+import { setCreateMetadata } from "./utils";
+
 export default {
   name: "CreateTask",
   setup() {
     const route = useRoute();
     const router = useRouter();
     const store = useTasksStore();
+    const mainStore = useMainStore();
 
     const form = ref({
       label: "",
       ref: (Math.random() + 1).toString(36).substring(2),
       fk_project: route.query.projectId,
+    });
+
+    onMounted(() => {
+      setCreateMetadata(mainStore, route.query.projectId);
     });
 
     const newRef = (id) => {

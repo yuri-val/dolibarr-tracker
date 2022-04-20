@@ -3,7 +3,6 @@ import { createPinia } from "pinia";
 import VueGtag from "vue-gtag";
 import withUIComponents from "@/utils/withUIComponents.js";
 
-
 import App from "./App.vue";
 import router from "./router";
 
@@ -14,9 +13,13 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 
-app.use(VueGtag, {
+app.use(
+  VueGtag,
+  {
     config: { id: "G-HKMF5W2Y2C" },
-}, router);
+  },
+  router
+);
 
 withUIComponents(app);
 
