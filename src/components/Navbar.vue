@@ -29,13 +29,14 @@
 </template>
 
 <script>
+import baseLogo from "@/assets/images/logo.png"
+
 export default {
   name: "Navbar",
   props: ["company", "user"],
   setup() {
     return {
-      baseLogo:
-        "https://st3.depositphotos.com/22052918/35822/v/380/depositphotos_358229708-stock-illustration-letter-simple-geometric-design-logo.jpg?forcejpeg=true",
+      baseLogo,
     };
   },
 };
