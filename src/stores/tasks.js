@@ -19,7 +19,6 @@ export const useTasksStore = defineStore(
         addTime(id, options) {
           return api.add_time(id, {
             ...options,
-            user_id: 0,
             date: formatDate(options.date),
           });
         },

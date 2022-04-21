@@ -1,0 +1,28 @@
+
+### Users#index
+# @name api/users#index
+GET       {{api_host}}/api/index.php/users
+Accept: application/json
+token-type: Bearer
+DOLAPIKEY: {{api_token}}
+
+### Users#info
+# @name api/users#info
+GET       {{api_host}}/api/index.php/users/info
+Accept: application/json
+token-type: Bearer
+DOLAPIKEY: {{api_token}}
+
+### Users#email
+# @name api/users#email
+GET {{api_host}}/api/index.php/users/email/{email}
+Accept: application/json
+token-type: Bearer
+DOLAPIKEY: {{api_token}}
+
+### Users#info
+# @name api/users#info
+GET {{api_host}}/api/index.php/users/{id}/groups
+Accept: application/json
+token-type: Bearer
+DOLAPIKEY: {{api_token}}

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { setup as api } from "@/utils/api/resources.js";
+import { setup as api, users as apiUsers } from "@/utils/api/resources.js";
 import { fromStore } from "../utils/localStorageStore";
 
 const defaultCompany = {
@@ -14,6 +14,7 @@ export const useMainStore = defineStore({
       isAuthenticated: false,
       error: null,
       company: defaultCompany,
+      user: {},
       breadcrumbs: [],
     }),
   getters: {},
@@ -28,6 +29,16 @@ export const useMainStore = defineStore({
         this.error = e;
         this.isAuthenticated = false;
         this.company = defaultCompany;
+      }
+    },
+    async loadUser() {
+      try {
+        const { data } = await apiUsers.info();
+        this.user = data;
+      } catch (e) {
+        console.log(e);
+        this.error = e;
+        this.user = {};
       }
     },
   },

@@ -14,7 +14,8 @@
           {{ company.name }}
         </va-list-item-label>
         <va-list-item-label caption>
-          {{ company.idprof1 }}
+          <va-icon name="person" size="small" />
+          {{`${user.firstname} ${user.lastname}`}}
         </va-list-item-label>
       </va-list-item-section>
 
@@ -30,7 +31,7 @@
 <script>
 export default {
   name: "Navbar",
-  props: ["company"],
+  props: ["company", "user"],
   setup() {
     return {
       baseLogo:

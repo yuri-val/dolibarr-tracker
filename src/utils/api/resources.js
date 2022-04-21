@@ -12,3 +12,7 @@ export const tasks = compose(api, "tasks", {
 export const setup = {
   company: (options = {}) => api.get("setup/company", options),
 };
+
+export const users = compose(api, "users", {
+  info: (options = {}) => api.get("users/info", options),
+});

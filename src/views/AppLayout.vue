@@ -15,6 +15,7 @@ export default {
 
     onMounted(() => {
       store.loadCompany();
+      store.loadUser();
     });
     return {
       store,
@@ -25,7 +26,7 @@ export default {
 
 <template>
   <div class="app-layout">
-    <navbar :company="store.company" />
+    <navbar :company="store.company" :user="store.user" />
     <div class="app-layout__content">
       <div class="app-layout__page">
         <breadcrumbs />

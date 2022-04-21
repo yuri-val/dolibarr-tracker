@@ -26,3 +26,5 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+http/http-client.private.env.json

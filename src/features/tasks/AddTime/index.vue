@@ -82,11 +82,6 @@ import { setAddTimeMetadata } from "../utils";
 export default {
   name: "AddTime",
   setup() {
-    const form = ref({
-      date: new Date(),
-      duration: 1800,
-      note: "",
-    });
 
     const store = useTasksStore();
     const mainStore = useMainStore();
@@ -95,6 +90,15 @@ export default {
 
     const loading = computed(() => store.loading.item);
     const item = computed(() => store.item);
+    const userId = computed(() => mainStore.user.id);
+
+    const form = ref({
+      date: new Date(),
+      duration: 1800,
+      note: "",
+      user_id: userId.value
+    });
+
 
     const hours = computed(() => Math.floor(form.value.duration / 3600));
     const minutes = computed(() =>
