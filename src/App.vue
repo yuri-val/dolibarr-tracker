@@ -3,8 +3,10 @@
 </template>
 
 <script>
-import AppLayout from "./views/AppLayout.vue";
+import { defineAsyncComponent } from "vue";
 export default {
-  components: { AppLayout },
+  components: {
+    "app-layout": defineAsyncComponent(() => import("./views/AppLayout.vue")),
+  },
 };
 </script>

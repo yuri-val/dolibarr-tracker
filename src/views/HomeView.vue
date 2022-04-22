@@ -15,11 +15,22 @@ export default {
         breadcrumbs: [],
       });
     });
+
+    return {
+      mainStore,
+    };
   },
 };
 </script>
 
 <template>
+  <va-alert
+    v-if="mainStore.error"
+    color="danger"
+    :title="mainStore.error.title"
+  >
+    {{ mainStore.error.message }}
+  </va-alert>
   <main>
     <div class="row">
       <div class="flex xs6 align-text--center">

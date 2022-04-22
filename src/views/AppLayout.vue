@@ -1,13 +1,16 @@
 <script>
 import { useMainStore } from "@/stores/main.js";
-import { onMounted } from "vue";
-import Navbar from "@/components/Navbar.vue";
+import { onMounted, defineAsyncComponent } from "vue";
 import { toStore } from "@/utils/localStorageStore";
-import Breadcrumbs from "@/components/Breadcrumbs.vue";
 
 export default {
   name: "app-layout",
-  components: { Breadcrumbs, Navbar },
+  components: {
+    navbar: defineAsyncComponent(() => import("@/components/Navbar.vue")),
+    breadcrumbs: defineAsyncComponent(() =>
+      import("@/components/Breadcrumbs.vue")
+    ),
+  },
   setup() {
     const store = useMainStore();
 

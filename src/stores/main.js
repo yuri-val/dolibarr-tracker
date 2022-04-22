@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { setup as api, users as apiUsers } from "@/utils/api/resources.js";
 import { fromStore } from "../utils/localStorageStore";
+import get from "lodash/get";
 
 const defaultCompany = {
   name: "NEED AUTHORIZATION",
@@ -24,9 +25,13 @@ export const useMainStore = defineStore({
         const { data } = await api.company();
         this.company = data;
         this.isAuthenticated = true;
+        this.error = null;
       } catch (e) {
-        console.log(e);
-        this.error = e;
+        this.error = {
+          title: e.toString(),
+          message: get(e, "response.data.error.message"),
+          data: e.response,
+        };
         this.isAuthenticated = false;
         this.company = defaultCompany;
       }
@@ -36,8 +41,6 @@ export const useMainStore = defineStore({
         const { data } = await apiUsers.info();
         this.user = data;
       } catch (e) {
-        console.log(e);
-        this.error = e;
         this.user = {};
       }
     },

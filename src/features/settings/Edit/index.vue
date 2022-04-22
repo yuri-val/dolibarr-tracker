@@ -38,10 +38,12 @@ import { useMainStore } from "@/stores/main";
 import { ref, onMounted } from "vue";
 import { fromStore, toStore } from "@/utils/localStorageStore";
 import { setSettingsMetaData } from "../utils";
+import { useRouter } from "vue-router";
 
 export default {
   name: "Settings",
   setup() {
+    const router = useRouter();
     const store = useSettingsStore();
     const mainStore = useMainStore();
     const form = ref(
@@ -55,7 +57,7 @@ export default {
 
     const onSave = () => {
       store.$patch(form.value);
-      window.location.replace("/");
+      window.location.replace(router.resolve({ name: "home" }).href);
     };
 
     onMounted(() => {

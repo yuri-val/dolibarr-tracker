@@ -15,7 +15,8 @@
         </va-list-item-label>
         <va-list-item-label caption>
           <va-icon name="person" size="small" />
-          {{`${user.firstname} ${user.lastname}`}}
+          <span v-if="isEmpty(user)">{{ company.idprof1 }}</span>
+          <span v-else>{{ `${user.firstname} ${user.lastname}` }}</span>
         </va-list-item-label>
       </va-list-item-section>
 
@@ -29,7 +30,8 @@
 </template>
 
 <script>
-import baseLogo from "@/assets/images/logo.png"
+import baseLogo from "@/assets/images/logo.png";
+import isEmpty from "lodash/isEmpty";
 
 export default {
   name: "Navbar",
@@ -37,6 +39,7 @@ export default {
   setup() {
     return {
       baseLogo,
+      isEmpty,
     };
   },
 };

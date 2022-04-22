@@ -17,6 +17,7 @@ import {
   VaBadge,
   VaDivider,
   VaDateInput,
+  VaAlert,
 } from "vuestic-ui";
 
 export default function withUIComponents(app) {
@@ -38,5 +39,6 @@ export default function withUIComponents(app) {
     .component("va-card-content", VaCardContent)
     .component("va-badge", VaBadge)
     .component("va-divider", VaDivider)
-    .component("va-date-input", VaDateInput);
+    .component("va-date-input", VaDateInput)
+    .component("va-alert", VaAlert);
 }
